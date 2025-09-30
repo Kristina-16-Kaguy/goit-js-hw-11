@@ -2,6 +2,11 @@ import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 import { refs } from './refs.js';
 
+const lightbox = new SimpleLightbox('.gallery a', {
+  captionsData: 'alt',
+  captionDelay: 250,
+});
+
 export function createGallery(images) {
   const markup = images
     .map(
@@ -37,4 +42,12 @@ export function createGallery(images) {
 
 export function clearGallery() {
   refs.gallery.innerHTML = '';
+}
+
+export function showLoader() {
+  refs.loader.classList.add('is-visible');
+}
+
+export function hideLoader() {
+  refs.loader.classList.remove('is-visible');
 }

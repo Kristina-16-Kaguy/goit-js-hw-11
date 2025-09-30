@@ -1,15 +1,20 @@
 import { getImagesByQuery } from './js/pixabay-api.js';
-import { createGallery, clearGallery } from './js/render-functions.js';
+import {
+  clearGallery,
+  createGallery,
+  hideLoader,
+  showLoader,
+} from './js/render-functions.js';
 import { refs } from './js/refs.js';
 
-// refs.form.addEventListener('submit', event => {
-//   event.preventDefault();
-//   const inputValue = event.target.elements['search-text'].value.trim();
+refs.form.addEventListener('submit', event => {
+  event.preventDefault();
+  const inputValue = event.target.elements['search-text'].value.trim();
 
-//   if (!inputValue) return;
-//   clearGallery();
-//   showLoader();
-//   getImagesByQuery(inputValue)
-//     .then(images => createGallery(images))
-//     .finally(hideLoader);
-// });
+  if (!inputValue) return;
+  clearGallery();
+  showLoader();
+  getImagesByQuery(inputValue)
+    .then(images => createGallery(images))
+    .finally(hideLoader);
+});

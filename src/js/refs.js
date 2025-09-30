@@ -1,5 +1,5 @@
 export const refs = {
   form: document.querySelector('.form'),
-  allery: document.querySelector('.gallery'),
+  gallery: document.querySelector('.gallery'),
   loader: document.querySelector('.loader'),
 };

@@ -7,7 +7,7 @@ const BASE_URL = 'https://pixabay.com/api/';
 export function getImagesByQuery(query) {
   return axios
     .get(BASE_URL, getParams(query))
-    .then(res => {
+    .then(response => {
       const images = response.data.hits;
 
       if (!images || !images.length) {
@@ -15,6 +15,8 @@ export function getImagesByQuery(query) {
           'Sorry, there are no images matching your search query. Please try again!'
         );
       }
+
+      return images;
     })
     .catch(error => {
       showError(error.message);
@@ -28,8 +30,9 @@ function getParams(query) {
       key: API_KEY,
       q: query,
       image_type: 'photo',
-      orientation: horizontal,
+      orientation: 'horizontal',
       safesearch: true,
+      per_page: 9,
     },
   };
 }
