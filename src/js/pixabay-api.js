@@ -1,17 +1,19 @@
 import axios from 'axios';
-import { showError } from './iziToastHelper';
+import { showError } from './iziToastHelper.js';
 
 const API_KEY = '52515106-cf2fe0ed90e49660ada5f5535';
 const BASE_URL = 'https://pixabay.com/api/';
 
-function getImagesByQuery(query) {
+export function getImagesByQuery(query) {
   return axios
     .get(BASE_URL, getParams(query))
     .then(res => {
       const images = response.data.hits;
 
       if (!images || !images.length) {
-        showError('Немає обраних зображень');
+        showError(
+          'Sorry, there are no images matching your search query. Please try again!'
+        );
       }
     })
     .catch(error => {
